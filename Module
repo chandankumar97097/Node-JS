@@ -1,0 +1,14 @@
+customModule.js:
+exports.myDateTime = function () {
+  return Date();
+};
+
+index.js:
+var http = require('http');
+const { curruntDate } = require('./customModule');
+
+http.createServer(function(req, res){
+    res.writeHead(200, {'content-type': 'text/html'});
+    res.write('Hi Guise '+curruntDate());
+    res.end();
+}).listen(1234);
